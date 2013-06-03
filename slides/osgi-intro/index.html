@@ -1,50 +1,128 @@
 <!doctype html>
 <html lang="en">    
-<head>
-    <meta charset="utf-8">
-    <title>Reveal.js 3 Slide Demo</title>
-    <link rel="stylesheet" href="../css/reveal.min.css">
-    <link rel="stylesheet" href="../css/theme/serif.css" id="theme">    
-    <!--Add support for earlier versions of Internet Explorer -->
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
-</head>
- 
-<body>
-    <!-- Wrap the entire slide show in a div using the "reveal" class. -->
-    <div class="reveal">
-        <!-- Wrap all slides in a single "slides" class -->
-        <div class="slides">
- 
-            <!-- ALL SLIDES GO HERE -->
-            <!-- Each section element contains an individual slide -->
-            <section>
-                <h1>About My Product</h1>
-                <p>My product discussed here</p>        
-            </section>
- 
-            <section id="show-a-link">
-                <h1>Show a live link</h1>
-                <p>Slide 2 discussed here</p>
-                <p>See <a href="http://www.htmlcheats.com">HTMLCheats.com</a><p>
-            </section>
- 
-            <section>
-                <h1>Slide 3</h1>
-                <p>How does one revisit an arbitrary slide in code?</p>
-                <p>Visit internal slide<a href="#/show-a-link"> 2</a>
-            </section>
- 
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Introdução ao OSGi">
+        <meta name="author" content="Rafael M. Pestano">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <title>Introdução ao OSGi</title>
+        <link rel="stylesheet" href="../css/reveal.min.css">
+        <!--<link rel="stylesheet" href="../css/print/pdf.css">-->
+
+        <link rel="stylesheet" href="../css/theme/default.css" id="theme">    
+        <!--Add support for earlier versions of Internet Explorer -->
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+        <div class="reveal">
+            <!-- Wrap all slides in a single "slides" class -->
+            <div class="slides">
+
+                <!-- ALL SLIDES GO HERE -->
+                <!-- Each section element contains an individual slide -->
+                <section>
+                    <section>
+                        <h1>Aplicações modulares em Java</h1>
+                        <p>com OSGi</p>    
+                        <br/>
+                        <p><a href='http://rmpestano.github.io/talks/slides/osgi-intro/index.html' target='_blank'>http://rmpestano.github.io/talks/slides/osgi-intro/</a></p>
+                    </section> 
+                    <section>
+                        <div>apresentação por</div>
+                        <br/>
+                        <div style=""><img src="images/rmpestano.jpeg"/> </div>
+                        <div><a href='http://github.com/rmpestano' target="_blank">Rafael Pestano</a> / <a href='http://twitter.com/realpestano/' target="_blank">@realpestano</a></div>
+                    </section>
+                    <section data-state="blackout">
+                        <div>
+                            <div>Desenvolvedor Java</div>
+                            <div style="">Procergs</div>
+                            <div style="">
+                                <br>
+                            </div>
+                            <div style=""><a href='http://www.linkedin.com/pub/rafael-pestano/53/2a6/572' target="_blank">Linkedin</a></div>
+                        </div>
+                    </section>
+                </section>
+                <section >
+                    <h1>Objetivos</h1>
+                    <ul>
+                        <li>Sistema modular</li>
+                        <li>Apresentar o framework OSGi</li>
+                        <li>Demonstrar os conceitos na prática</li>
+                        <li>Proposta para TF da disciplina</li>
+                    </ul> 
+                </section>
+                <section>
+                    <section>
+                        <h1>Agenda</h1>
+                        <ul>
+                            <li class='fragment roll-in'>Sistema modular</li>
+                            <li class='fragment roll-in'>O que é o OSGi?</li>
+                            <li class='fragment roll-in'>Standard Java x OSGi</li>
+                            <li class='fragment roll-in'>Anatomia de um bundle</li>
+                            <li class='fragment roll-in'>Camada de serviços e serviços distribuídos</li>
+                            <li class='fragment roll-in'>Exemplo prático - calculadora modular</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>fontes disponíveis em</h1>
+                        <p><a href='https://github.com/rmpestano/osgi-calc'>https://github.com/rmpestano/osgi-calc</a></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section id="show-a-link">
+                        <h1>O que é um sistema modular?</h1>
+                        <p><img src="images/jigsaw.png"/> </p>
+                    </section>
+                    <section>
+                        <h1>Módulo</h1>
+                        <ul>
+                            <li>Unidade básica de uma arquitetura modular</li>
+                            <li>Autocontido</li>   
+                            <li>Alta coesão</li>   
+                            <li>Baixo acoplamento</li>
+                        </ul>
+                    </section> 
+                    <section>
+                         <p><img src="images/granularity.png"/> </p>
+                    </section>
+                </section>
+                <section>
+                    <h1>OSGi</h1>
+                    <p>Arquitetura modular orientada a serviços para sistemas distribuídos</p>
+                    <p>Conjunto de especificações que define um sistema dinâmico de componentes para plataforma Java</p>  
+                    <p>Padrão "De facto" para aplicações modulares em Java</p>
+                    <p></p>
+                </section>
+
+                <section>
+                    <h1>Referências</h1>
+
+                    <ol>
+                        <li>http://www.manning.com/hall</li>
+                        <li>http://www.webopedia.com/TERM/M/modular_architecture.html</li>
+                        <li>http://en.wikipedia.org/wiki/OSGi#Projects_using_OSGi</li>
+                        <li>http://stackoverflow.com/questions/373193/what-is-classpath-hell-and-is-was-it-really-a-problem-for-java</li>
+                    </ol>
+                </section>
+
             </div>
-    </div>
-    <script src="../lib/js/head.min.js"></script>
-    <script src="../js/reveal.min.js"></script>
- 
-    <script>
-        // Required, even if empty.
-        Reveal.initialize({
-        });
-    </script>
-</body>
+        </div>
+        <script src="../lib/js/head.min.js"></script>
+        <script src="../js/reveal.min.js"></script>
+
+        <script>
+            // Required, even if empty.
+            Reveal.initialize({
+            });
+        </script>
+    </body>
 </html>

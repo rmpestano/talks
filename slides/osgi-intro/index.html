@@ -91,41 +91,46 @@
                             <li>Baixo acoplamento</li>
                         </ul>
                     </section> 
+                </section>
+                <section>
+                    <section>
+                        <h1>OSGi</h1>
+                        <ul>
+                            <li><p>Arquitetura modular orientada a serviços para sistemas distribuídos</p></li>
+                            <li><p>Conjunto de especificações que define um sistema dinâmico de componentes para plataforma Java</p>  </li>
+                            <li><p>Padrão "De facto" para aplicações modulares em Java</p></li>
+                        </ul>        
+                    </section>
                     <section>
                         <p><img src="images/granularity.png"/> </p>
                     </section>
                 </section>
                 <section>
-                    <h1>OSGi</h1>
-                    <ul>
-                        <li><p>Arquitetura modular orientada a serviços para sistemas distribuídos</p></li>
-                        <li><p>Conjunto de especificações que define um sistema dinâmico de componentes para plataforma Java</p>  </li>
-                        <li><p>Padrão "De facto" para aplicações modulares em Java</p></li>
-                    </ul>        
-                </section>
-                <section>
                     <section>
-                    <h1>Vantagens OSGi</h1> 
-                    <ul>
-                        <li>
-                            Classpath extendido
-                        </li>
-                        <li>
-                            Serviços dinâmicos("Hotplugability")
-                        </li>
-                        <li>
-                            Versionamento
-                        </li>
-                         <li>
-                            Dependencias explícitas
-                        </li>
-                    </ul>
+                        <h1>Vantagens OSGi</h1> 
+                        <ul>
+                            <li>
+                                Classpath extendido
+                            </li>
+                            <li>
+                                Serviços dinâmicos("Hotplugability")
+                            </li>
+                            <li>
+                                Versionamento
+                            </li>
+                            <li>
+                                Dependencias explícitas("clear boundaries")
+                            </li>
+                        </ul>
                     </section>
-                    
                     <section>
-                        <h1>Class Loading</h1>
+                        <h2>Standard Class Loading</h2>
+                        <p><img src="images/tomcat.png"/> </p>
+                    </section>
+                    <section>
+                        <h2>OSGi class loading</h2>
                         <p>carregamento de classes baseado em um grafo de módulos versionados</p>
-                         <ul>
+                        <ul>
                             <li class='fragment roll-in'>cada módulo tem seu próprio classpath...</li>
                             <li class='fragment roll-in'>diversas versões de um mesmo bundle podem ser carregados na mesma JVM...</li>
                             <li class='fragment roll-in'>compartilhando e reusando classes entre si...</li>
@@ -133,7 +138,7 @@
                             <li class='fragment roll-in'>de uma maneira padronizada...</li>
                             <li class='fragment roll-in'>significa...</li>
                             <li class='fragment roll-in'>"NO MORE CLASSPATH HELL!"</li>
-                         </ul>   
+                        </ul>   
                     </section>
                 </section>
                 <section>

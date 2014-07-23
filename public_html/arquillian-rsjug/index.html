@@ -97,12 +97,12 @@
             </section>
         </section>
 
-        <section data-background="images/ikki.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
-            <section  >
+        <section  >
+            <section data-background="images/ikki.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
                 <h2>Introdução ao Arquillian</h2>
                 <a href="http://arquillian.org" target="_blank"><img height="480" width="640" src="images/arquillian.jpg"/> </a>
             </section>
-            <section>
+            <section data-background="images/ikki1.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%">
                 <h2>Introduçao ao Arquillian</h2>
                 <ul>
                     <li class='fragment roll-in'>testes de integração tão fáceis quanto unitários</li>
@@ -140,8 +140,8 @@
             <h2>Modos de execução</h2>
             <ul>
                 <li>In container</li>
-                <li>client</li>
-                <li>mixed</li>
+                <li>Client</li>
+                <li>Mixed mode</li>
             </ul>
         </section>
         <section  data-background="images/ikki.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
@@ -152,6 +152,8 @@
                     <li class='fragment roll-in'><span style="text-decoration: underline">Persistence</span>: gerenciamento da camada de persistencia via DBUnit</li>
                     <li class='fragment roll-in'><span style="text-decoration: underline">Drone</span>: Integração com o selenium e gerenciamento do webdriver.</li>
                     <li class='fragment roll-in'><span style="text-decoration: underline">Graphene</span>: extende o selenium provendo funcionalidades como esperas automaticas, fragmentos de páginas, seletores adicionais(jquery, angular), etc...</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">JBehave</span>: testes de aceitação orientados ao comportamento dentro do container.</li>
+
                 </ul>
             </div>
         </section>
@@ -159,7 +161,6 @@
             <h2>Plataforma extensível</h2>
             <div>
                 <ul>
-                    <li class='fragment roll-in'><span style="text-decoration: underline">JBehave</span>: testes de aceitação orientados ao comportamento dentro do container.</li>
                     <li class='fragment roll-in'><span style="text-decoration: underline">Cukespace</span>: teste de aceitação no container usando o Cucumber</li>
                     <li class='fragment roll-in'><span style="text-decoration: underline">Warp</span>: habilita testes caixa cinza</li>
                     <li class='fragment roll-in'><span style="text-decoration: underline">Recorder</span>: gravação dos testes com video e imagem.</li>
@@ -172,37 +173,64 @@
         <section data-background="images/ikki4.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" data-markdown>
 
             <script type="text/template">
-                ### Exemplo SEM Arquillian
+                ### Exemplo
                 ```java
-                    @RunWith(JUnit4.class)
-					public class MyBeanTestOutcontainer {
-					  private static Weld  weld;
+@RunWith(JUnit4.class)
+public class MyBeanTestOutcontainer {
+      private static Weld  weld;
+      private static WeldContainer weldContainer;
 
-					  private static WeldContainer weldContainer;
+	  //@Inject //injection wont work here, you need to create your won runner to start CDI before JUnit takes control
+	  //MyCDIBean   myBean; //arquillian test enrichers to rescue
 
-					  //@Inject //injection wont work here, you need to create your won runner to start CDI before JUnit takes control
-					  //MyCDIBean   myBean; //arquillian test enrichers to rescue
+	  @BeforeClass
+	  public static void setupClass() {
+		weld = new Weld();
+		weldContainer = weld.initialize();
+	  }
 
-					  @BeforeClass
-					  public static void setupClass() {
-						weld = new Weld();
-						weldContainer = weld.initialize();
-					  }
+	  @AfterClass
+	  public static void teardownClass() {
+		weld.shutdown();
+	  }
 
-					  @AfterClass
-					  public static void teardownClass() {
-						weld.shutdown();
-					  }
+	  @Test
+	  public void dummyTest() {
+	    MyBean myBean = weldContainer.instance().select(MyBean.class).get();
+		assertNotNull(myBean);
+		assertTrue(myBean.isAlive());
+	  }
 
-					  @Test
-					  public void dummyTest() {
-						MyBean myBean = weldContainer.instance().select(MyBean.class).get();
-						assertNotNull(myBean);
-						assertTrue(myBean.isAlive());
-					  }
+}
+```
+              </script>
+   </section>
+   <section data-background="images/ikki2.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" data-markdown>
 
-					}
-               ```
+            <script type="text/template">
+                ### Exemplo
+                ```java
+@RunWith(Arquillian.class)
+public class MyBeanTest {
+
+   @Inject
+   private MyBean mybean;
+
+   @Deployment
+   public static JavaArchive createDeployment(){
+      return ShrinkWrap.create(JavaArchive.class, "test.jar")
+            .addClass(MyBean.class)
+            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+   }
+
+   @Test
+   public void shouldBeAlive() {
+      assertNotNull(mybean);
+      assertTrue(mybean.isAlive());
+      assertFalse(new MyBean().isAlive());
+   }
+}
+```
               </script>
         </section>
         <section>

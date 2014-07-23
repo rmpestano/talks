@@ -175,33 +175,35 @@
     <script type="text/template">
         ### Exemplo
         ```java
-        @RunWith(JUnit4.class)
-        public class MyBeanTestOutcontainer {
-        private static Weld  weld;
-        private static WeldContainer weldContainer;
+@RunWith(JUnit4.class)
+public class MyBeanTestOutcontainer {
+  private static Weld          weld;
 
-        //@Inject //injection wont work here, you need to create your won runner to start CDI before JUnit takes control
-        //MyCDIBean   myBean; //arquillian test enrichers to rescue
+  private static WeldContainer weldContainer;
 
-        @BeforeClass
-        public static void setupClass() {
-        weld = new Weld();
-        weldContainer = weld.initialize();
-        }
+  //@Inject //injection wont work here, you need to create your won runner to start CDI before JUnit takes control
+  //MyCDIBean   myBean; //arquillian test enrichers to rescue
 
-        @AfterClass
-        public static void teardownClass() {
-        weld.shutdown();
-        }
+  @BeforeClass
+  public static void setupClass() {
+    weld = new Weld();
+    weldContainer = weld.initialize();
+  }
 
-        @Test
-        public void dummyTest() {
-        MyBean myBean = weldContainer.instance().select(MyBean.class).get();
-        assertNotNull(myBean);
-        assertTrue(myBean.isAlive());
-        }
+  @AfterClass
+  public static void teardownClass() {
+    weld.shutdown();
+  }
 
-        }
+  @Test
+  public void dummyTest() {
+    MyBean myBean = weldContainer.instance().select(MyBean.class).get();
+    assertNotNull(myBean);
+    assertTrue(myBean.isAlive());
+  }
+
+}
+
         ```
     </script>
 </section>
@@ -210,26 +212,24 @@
     <script type="text/template">
         ### Exemplo
         ```java
-        @RunWith(Arquillian.class)
-        public class MyBeanTest {
+@RunWith(Arquillian.class)
+public class MyBeanTest {
 
-        @Inject
-        private MyBean mybean;
+  @Inject
+  private MyBean mybean;
 
-        @Deployment
-        public static JavaArchive createDeployment(){
-        return ShrinkWrap.create(JavaArchive.class, "test.jar")
-        .addClass(MyBean.class)
-        .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-        }
+  @Deployment
+  public static JavaArchive createDeployment() {
+    return ShrinkWrap.create(JavaArchive.class, "test.jar").addClass(MyBean.class).addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+  }
 
-        @Test
-        public void shouldBeAlive() {
-        assertNotNull(mybean);
-        assertTrue(mybean.isAlive());
-        assertFalse(new MyBean().isAlive());
-        }
-        }
+  @Test
+  public void shouldBeAlive() {
+    assertNotNull(mybean);
+    assertTrue(mybean.isAlive());
+    assertFalse(new MyBean().isAlive());
+  }
+}
         ```
     </script>
 </section>

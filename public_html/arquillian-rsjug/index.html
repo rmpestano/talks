@@ -6,16 +6,33 @@
     <meta name="author" content="Rafael M. Pestano">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Arquillian - JavaEE Testing</title>
     <link rel="stylesheet" href="../css/reveal.min.css">
     <!--<link rel="stylesheet" href="../css/print/pdf.css">-->
 
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+   <!-- <link rel="stylesheet" href="../css/theme/default.css" id="theme">-->
+
+<!--
+    <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+-->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../lib/css/solarized_white.css">
     <!--Add support for earlier versions of Internet Explorer -->
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
+
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
 </head>
 
 <body>
@@ -27,9 +44,9 @@
         <!-- ALL SLIDES GO HERE -->
         <!-- Each section element contains an individual slide -->
         <section>
-            <section>
-                <h1>Java EE In-Container Testing</h1>
-                <p>com Arquillian</p>
+            <section data-background="images/arq_back.jpg">
+                <h1 style="color: white">Arquillian</h1>
+                 <p style="color: white">Testanto aplicações JavaEE dentro do container</p>
                 <br/>
                 <p><a href='http://rmpestano.github.io/talks/slides/arquillian-rsjug/index.html' target='_blank'>http://rmpestano.github.io/talks/slides/arquillian-rsjug/</a></p>
             </section>
@@ -80,7 +97,7 @@
             </section>
         </section>
 
-        <section>
+        <section data-background="images/ikki.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
             <section  >
                 <h2>Introdução ao Arquillian</h2>
                 <a href="http://arquillian.org" target="_blank"><img height="480" width="640" src="images/arquillian.jpg"/> </a>
@@ -97,7 +114,7 @@
                 </ul>
             </section>
         </section>
-        <section>
+        <section data-background="images/ikki2.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
             <h2>Containers suportados</h2>
             <ul>
                 <li>Jboss/wildfly</li>
@@ -111,7 +128,7 @@
                 <li>e provavelmente mais alguns</li>
             </ul>
         </section>
-        <section>
+        <section data-background="images/ikki3.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
             <h2>Tipos de containers</h2>
             <ol>
                 <li>embbeded</li>
@@ -119,7 +136,7 @@
                 <li>remote</li>
             </ol>
         </section>
-        <section  >
+        <section data-background="images/ikki1.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%"  >
             <h2>Modos de execução</h2>
             <ul>
                 <li>In container</li>
@@ -127,34 +144,66 @@
                 <li>mixed</li>
             </ul>
         </section>
-        <section  >
+        <section  data-background="images/ikki.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" >
             <h2>Plataforma extensível</h2>
             <div >
                 <ul>
-                    <li class='fragment roll-in'>Core: base para outras extensões, responsável pelo ciclo de vida do container, deployment e da injeção de dependência e recursos nos testes.</li>
-                    <li class='fragment roll-in'>Persistence: gerenciamento da camada de persistencia via DBUnit</li>
-                    <li class='fragment roll-in'>Drone: Integração com o selenium e gerenciamento do webdriver.</li>
-                    <li class='fragment roll-in'>Graphene: extende o selenium provendo funcionalidades como esperas automaticas, fragmentos de páginas, seletores adicionais(jquery, angular), etc...</li>
-                    <li class='fragment roll-in'>JBehave: testes de aceitação orientados ao comportamento dentro do container.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Core</span>: base para outras extensões, responsável pelo ciclo de vida do container, deployment e da injeção de dependência e recursos nos testes.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Persistence</span>: gerenciamento da camada de persistencia via DBUnit</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Drone</span>: Integração com o selenium e gerenciamento do webdriver.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Graphene</span>: extende o selenium provendo funcionalidades como esperas automaticas, fragmentos de páginas, seletores adicionais(jquery, angular), etc...</li>
                 </ul>
             </div>
         </section>
-        <section  >
+        <section data-background="images/ikki2.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%"  >
             <h2>Plataforma extensível</h2>
             <div>
                 <ul>
-                    <li class='fragment roll-in'>Cukespace: teste de aceitação no container usando o Cucumber</li>
-                    <li class='fragment roll-in'>Warp: habilita testes caixa cinza</li>
-                    <li class='fragment roll-in'>Recorder: gravação dos testes com video e imagem.</li>
-                    <li class='fragment roll-in'>Rest: testes caixa branca para endpoints REST</li>
-                    <li class='fragment roll-in'>JaCoCo: cobertura de código.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">JBehave</span>: testes de aceitação orientados ao comportamento dentro do container.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Cukespace</span>: teste de aceitação no container usando o Cucumber</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Warp</span>: habilita testes caixa cinza</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Recorder</span>: gravação dos testes com video e imagem.</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">Rest</span>: testes caixa branca para endpoints REST</li>
+                    <li class='fragment roll-in'><span style="text-decoration: underline">JaCoCo</span>: cobertura de código.</li>
                     <li class='fragment roll-in'>e provavelmente outras.</li>
                 </ul>
             </div>
         </section>
-        <section  >
-            <h2>Exemplo</h2>
-            <div><img height="500" width="600" src="images/example.jpg"/> </div>
+        <section data-background="images/ikki4.jpg" data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%" data-markdown>
+
+            <script type="text/template">
+                ### Exemplo SEM Arquillian
+                ```java
+                    @RunWith(JUnit4.class)
+					public class MyBeanTestOutcontainer {
+					  private static Weld  weld;
+
+					  private static WeldContainer weldContainer;
+
+					  //@Inject //injection wont work here, you need to create your won runner to start CDI before JUnit takes control
+					  //MyCDIBean   myBean; //arquillian test enrichers to rescue
+
+					  @BeforeClass
+					  public static void setupClass() {
+						weld = new Weld();
+						weldContainer = weld.initialize();
+					  }
+
+					  @AfterClass
+					  public static void teardownClass() {
+						weld.shutdown();
+					  }
+
+					  @Test
+					  public void dummyTest() {
+						MyBean myBean = weldContainer.instance().select(MyBean.class).get();
+						assertNotNull(myBean);
+						assertTrue(myBean.isAlive());
+					  }
+
+					}
+               ```
+              </script>
         </section>
         <section>
             <section  >
@@ -181,6 +230,8 @@
         <section>
             <h2>Hands on!</h2>
             <div><img height="500" width="600" src="images/handson.jpg"/> </div>
+            <h5>Fontes disponíveis em:</h5>
+            <p><a href='https://github.com/rmpestano/rsjug'>https://github.com/rmpestano/rsjug</a></p>
         </section>
         <section>
             <h2>Referências</h2>
@@ -200,9 +251,46 @@
 <script src="../js/reveal.min.js"></script>
 <!--<script src="../js/print-pdf.js"></script>-->
 <script>
-    // Required, even if empty.
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
     });
+
 </script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+= Arquillian TDC2014 Poa Slides
+
+== Build instructions
+
+To generate the HTML presentation, run the following command:
+----
+asciidoctor -T asciidoctor-backends/slim -a data-uri -a docinfo -bdzslides -a linkcss! slides.adoc
+
+----

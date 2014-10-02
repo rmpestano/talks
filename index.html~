@@ -32,7 +32,16 @@
         
         <ul>
             <li>
-                <a href="slides/OSGiIntro/public_html/index.html" target="_blank" > OSGi Introduction (Jun 2013) </a>
+                <a href="slides/osgi-intro/index.html" target="_blank" > OSGi Introduction (Jun 2013) </a>
+            </li>
+            <li>
+                <a href="slides/arquillian-rsjug/index.html" target="_blank" >JavaEE testing with Arquillian (Jul 2014) </a>
+            </li>
+            <li>
+                <a href="slides/continuous/index.html" target="_blank" >Continuous Delivery (Ago 2014) </a>
+            </li>
+	    <li>
+                <a href="slides/arquillian-tdc/slides.html" target="_blank" >Continuous Delivery (Ago 2014) </a>
             </li>
         </ul>
       </section>

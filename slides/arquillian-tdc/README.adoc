@@ -2,8 +2,21 @@
 
 == Build instructions
 
-To generate the HTML presentation, run the following command:
+=== Install asciidoctor(its already the gemfile so bundler install should do the trick)
+
+http://asciidoctor.org/docs/install-toolchain/
+
+=== Install required ruby gems
+----  
+bundler install
+  
+----  
+  
+=== Generate the presentation 
+To generate the HTML presentation, cd intro _arquillian-tdc_ folder and run the following command:
 ----
 asciidoctor -T asciidoctor-backends/slim -a data-uri -a docinfo -bdzslides -a linkcss! slides.adoc
 
 ----
+
+It should look something like here: http://rmpestano.github.io/talks/slides/arquillian-tdc/slides.html

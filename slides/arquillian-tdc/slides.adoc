@@ -1,15 +1,7 @@
-ifeval::["{qualifier}" == "continuous-dev"]
 = Unlock Continuous *Enterprise Development* using *Real Tests*
-Dan Allen
-v1.0, 2013-07-15
-:title: Unlock Continuous Enterprise Development using Real Tests
-endif::[]
-ifeval::["{qualifier}" != "continuous-dev"]
-= Reducing *Java Enterprise Testing* to *Child's Play*
 Dan Allen
 v1.0, 2013-05-07
 :title: Reducing Java Enterprise Testing to Child's Play
-endif::[]
 :corpname: Red Hat, Inc.
 :copyright: CC BY-SA 2.0
 :website: http://arquillian.org
@@ -17,7 +9,23 @@ endif::[]
 :arquillian_proper: pass:quotes[[ike]#Arquillian#]
 :hidecaption: caption=""
 :hidetitle: title="", caption=""
-include::attributes.conf[]
+:backend: dzslides
+:sectids!:
+:experimental:
+:toc2:
+:sectanchors:
+:imagesdir: images
+:source-highlighter: highlightjs
+:source-language: java
+:macros-on: subs="macros"
+:language: no-highlight
+:dzslides-highlight: github
+:dzslides-style: watermelon
+:dzslides-transition: fade
+:dzslides-aspect: 4-3
+:next-label: pass:quotes,attributes[*Next* [icon:caret-right[]]
+:dzslides-fonts: family=Yanone+Kaffeesatz:400,700,200,300|Covered+By+Your+Grace
+
 
 [.topic.intro]
 == *Testing*$$...$$

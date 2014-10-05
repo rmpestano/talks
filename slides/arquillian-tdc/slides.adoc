@@ -186,7 +186,7 @@ this is the secret to making Java enterprise testing child's play
 [.topic.source]
 == Arquillian "Hello, World!" Test
 
-[source,java]
+[source, subs="verbatim,quotes"]
 --
 include::snippets/GreeterTest.java[]
 --

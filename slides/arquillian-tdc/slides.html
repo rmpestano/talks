@@ -1,130 +1,134 @@
 <!DOCTYPE html><html lang="en" class="aspect-4-3"><head><meta charset="UTF-8" /><meta name="generator" content="Asciidoctor 1.5.1, dzslides backend" /><title>Reducing Java Enterprise Testing to Child's Play</title><meta name="author" content="Dan Allen" /><meta name="copyright" content="CC BY-SA 2.0" /><meta name="presdate" content="2013-05-07" /><meta name="company" content="Red Hat, Inc." /><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300|Covered+By+Your+Grace" /><style>
 /*
-Monokai style - ported by Luigi Maselli - http://grigio.org
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
 */
 
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #272822;
+  color: #333;
+  background: #f8f8f8;
   -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.hljs-template_comment,
+.diff .hljs-header,
+.hljs-javadoc {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.javascript .hljs-title,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-phpdoc,
+.hljs-dartdoc,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.javascript .hljs-title,
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
 }
 
 .hljs-tag,
 .hljs-tag .hljs-title,
-.hljs-keyword,
-.hljs-literal,
-.hljs-strong,
-.hljs-change,
-.hljs-winutils,
-.hljs-flow,
-.nginx .hljs-title,
-.tex .hljs-special {
-  color: #f92672;
+.hljs-rules .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
 }
 
-.hljs {
-  color: #ddd;
-}
-
-.hljs .hljs-constant,
-.asciidoc .hljs-code {
-	color: #66d9ef;
-}
-
-.hljs-code,
-.hljs-class .hljs-title,
-.hljs-header {
-	color: white;
-}
-
-.hljs-link_label,
 .hljs-attribute,
-.hljs-symbol,
-.hljs-symbol .hljs-string,
-.hljs-value,
-.hljs-regexp {
-	color: #bf79db;
+.hljs-variable,
+.lisp .hljs-body {
+  color: #008080;
 }
 
-.hljs-link_url,
-.hljs-tag .hljs-value,
-.hljs-string,
-.hljs-bullet,
-.hljs-subst,
-.hljs-title,
-.hljs-emphasis,
-.hljs-type,
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
 .hljs-preprocessor,
 .hljs-pragma,
-.ruby .hljs-class .hljs-parent,
-.hljs-built_in,
-.django .hljs-template_tag,
-.django .hljs-variable,
-.smalltalk .hljs-class,
-.hljs-javadoc,
-.django .hljs-filter .hljs-argument,
-.smalltalk .hljs-localvars,
-.smalltalk .hljs-array,
-.hljs-attr_selector,
-.hljs-pseudo,
-.hljs-addition,
-.hljs-stream,
-.hljs-envvar,
-.apache .hljs-tag,
-.apache .hljs-cbracket,
-.tex .hljs-command,
-.hljs-prompt {
-  color: #a6e22e;
-}
-
-.hljs-comment,
-.hljs-annotation,
-.smartquote,
-.hljs-blockquote,
-.hljs-horizontal_rule,
-.hljs-decorator,
-.hljs-template_comment,
 .hljs-pi,
 .hljs-doctype,
-.hljs-deletion,
 .hljs-shebang,
-.apache .hljs-sqbracket,
-.tex .hljs-formula {
-  color: #75715e;
-}
-
-.hljs-keyword,
-.hljs-literal,
-.css .hljs-id,
-.hljs-phpdoc,
-.hljs-dartdoc,
-.hljs-title,
-.hljs-header,
-.hljs-type,
-.vbscript .hljs-built_in,
-.rsl .hljs-built_in,
-.smalltalk .hljs-class,
-.diff .hljs-header,
-.hljs-chunk,
-.hljs-winutils,
-.bash .hljs-variable,
-.apache .hljs-tag,
-.tex .hljs-special,
-.hljs-request,
-.hljs-status {
+.hljs-cdata {
+  color: #999;
   font-weight: bold;
 }
 
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .javascript,
-.xml .vbscript,
-.xml .css,
-.xml .hljs-cdata {
-  opacity: 0.5;
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+
+.highlight {
+  background-color: #ffff00;
 }
 </style><style>
 /*
@@ -167,7 +171,7 @@ html, .view body {
 
 body, .view section {
   background-color: #F1F2EC;
-  font-size: 17px;
+  font-size: 11px;
   line-height: 1;
 }
 
@@ -828,12 +832,12 @@ section.title {
 section.title h1 {
   font-weight: normal;
   font-style: italic;
-  font-size: 4em;
+  font-size: 3.0em;
 }
 
 section.title h1 strong {
   color: #6C5482;
-  font-size: 1.5em;
+  font-size: 2.0em;
   display: block;
   font-style: normal;
 }
@@ -866,7 +870,7 @@ img.stretch-x {
 p.count {
   float: right;
   color: #6C5482;
-  font-size: 20em;
+  font-size: 18em;
   top: 45%;
 }
 
@@ -881,7 +885,7 @@ section.no-transition {
 }
 
 .small {
-  font-size: .8em;
+  font-size: .6em;
 }
 
 section.ending p.footer {
@@ -938,17 +942,17 @@ hr {
 <section><figure><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICBpZD0ic3ZnMzA1NSIKICAgdmVyc2lvbj0iMS4xIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIwLjQ4LjEgcjk3NjAiCiAgIHdpZHRoPSI4MDAiCiAgIGhlaWdodD0iNTAwIgogICBzb2RpcG9kaTpkb2NuYW1lPSJ0ZXN0aW5nX2NvbnRpbnV1bS5zdmciPgogIDxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTMwNjEiPgogICAgPHJkZjpSREY+CiAgICAgIDxjYzpXb3JrCiAgICAgICAgIHJkZjphYm91dD0iIj4KICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KICAgICAgICA8ZGM6dHlwZQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+CiAgICAgICAgPGRjOnRpdGxlIC8+CiAgICAgIDwvY2M6V29yaz4KICAgIDwvcmRmOlJERj4KICA8L21ldGFkYXRhPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMzMDU5IiAvPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiCiAgICAgYm9yZGVyb3BhY2l0eT0iMSIKICAgICBvYmplY3R0b2xlcmFuY2U9IjEwIgogICAgIGdyaWR0b2xlcmFuY2U9IjEwIgogICAgIGd1aWRldG9sZXJhbmNlPSIxMCIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCIKICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTYwMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI4NDEiCiAgICAgaWQ9Im5hbWVkdmlldzMwNTciCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjEuMDkiCiAgICAgaW5rc2NhcGU6Y3g9IjMzMi4yMDI4IgogICAgIGlua3NjYXBlOmN5PSIyNDcuNDc5OSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMjYiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmczMDU1IiAvPgogIDxnCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIGlua3NjYXBlOmxhYmVsPSJheGlzIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTExMTcpIiAvPgogIDxnCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIyIgogICAgIGlua3NjYXBlOmxhYmVsPSJsaW5lcyIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xMTE3KSIgLz4KICA8ZwogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMyIKICAgICBpbmtzY2FwZTpsYWJlbD0idGV4dCIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xMTE3KSIgLz4KICA8ZwogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyNCIKICAgICBpbmtzY2FwZTpsYWJlbD0ibGVnZW5kIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTExMTcpIj4KICAgIDxnCiAgICAgICBpZD0iZzM4OTMiPgogICAgICA8cGF0aAogICAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNjYyIKICAgICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgICAgaWQ9InBhdGgzMDY2IgogICAgICAgICBkPSJtIDg2LDExNjUgMCwzNjAgNjM1LDAiCiAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiM3OTc5Nzk7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtZGFzaGFycmF5Om5vbmUiIC8+CiAgICAgIDxwYXRoCiAgICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2MiCiAgICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICAgIGlkPSJwYXRoMzgzNyIKICAgICAgICAgZD0iTSAxMTksMTQ3NSA2NjksMTIzNyIKICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6NS45OTQ1MzQwMTk5OTk5OTk2OTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIgLz4KICAgICAgPHBhdGgKICAgICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIKICAgICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgICAgaWQ9InBhdGgzODM5IgogICAgICAgICBkPSJtIDExOSwxNDkyIDU1MCwtMTguNSIKICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I2ZmNDM0MjtzdHJva2Utd2lkdGg6NjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIgLz4KICAgICAgPHRleHQKICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMCwtMSwxLDAsMCwwKSIKICAgICAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEwMCUiCiAgICAgICAgIGlkPSJ0ZXh0Mzg0MSIKICAgICAgICAgeT0iNjYuMDk5OTk4IgogICAgICAgICB4PSItMTQ1Ny44NiIKICAgICAgICAgc3R5bGU9ImZvbnQtc2l6ZTo2MHB4O2ZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7bGluZS1oZWlnaHQ6MTAwJTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiM3OTc5Nzk7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6WWFub25lIEthZmZlZXNhdHo7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpZYW5vbmUgS2FmZmVlc2F0eiIKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuCiAgICAgICAgICAgeT0iNjYuMDk5OTk4IgogICAgICAgICAgIHg9Ii0xNDU3Ljg2IgogICAgICAgICAgIGlkPSJ0c3BhbjM4NDMiCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSI+Q29tcGxleGl0eTwvdHNwYW4+PC90ZXh0PgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zaXplOjQwcHg7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtsaW5lLWhlaWdodDoxMDAlO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6Izc5Nzk3OTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtmb250LWZhbWlseTpZYW5vbmUgS2FmZmVlc2F0ejstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOllhbm9uZSBLYWZmZWVzYXR6IgogICAgICAgICB4PSI5My4yNzk5OTkiCiAgICAgICAgIHk9IjE1NjMuMTIiCiAgICAgICAgIGlkPSJ0ZXh0MzgyMCIKICAgICAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEwMCUiPjx0c3BhbgogICAgICAgICAgIGlkPSJ0c3BhbjM4MjQiCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICB4PSI5My4yNzk5OTkiCiAgICAgICAgICAgeT0iMTU2My4xMiI+VW5pdCBUZXN0czwvdHNwYW4+PC90ZXh0PgogICAgICA8dGV4dAogICAgICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTAwJSIKICAgICAgICAgaWQ9InRleHQzODI4IgogICAgICAgICB5PSIxNTYzLjEyIgogICAgICAgICB4PSIyOTEuMjgiCiAgICAgICAgIHN0eWxlPSJmb250LXNpemU6NDBweDtmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2xpbmUtaGVpZ2h0OjEwMCU7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojNzk3OTc5O2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO2ZvbnQtZmFtaWx5Ollhbm9uZSBLYWZmZWVzYXR6Oy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246WWFub25lIEthZmZlZXNhdHoiCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbgogICAgICAgICAgIHk9IjE1NjMuMTIiCiAgICAgICAgICAgeD0iMjkxLjI4IgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuMzgzMCI+SW50ZWdyYXRpb25UZXN0czwvdHNwYW4+PC90ZXh0PgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zaXplOjQwcHg7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtsaW5lLWhlaWdodDoxMDAlO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6Izc5Nzk3OTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtmb250LWZhbWlseTpZYW5vbmUgS2FmZmVlc2F0ejstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOllhbm9uZSBLYWZmZWVzYXR6IgogICAgICAgICB4PSI1NTAiCiAgICAgICAgIHk9IjE1NjMuMTIiCiAgICAgICAgIGlkPSJ0ZXh0MzgzMiIKICAgICAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEwMCUiPjx0c3BhbgogICAgICAgICAgIGlkPSJ0c3BhbjM4MzQiCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICB4PSI1NTAiCiAgICAgICAgICAgeT0iMTU2My4xMiI+U3lzdGVtIFRlc3RzPC90c3Bhbj48L3RleHQ+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXNpemU6MjhweDtmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2xpbmUtaGVpZ2h0OjEwMCU7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojNzk3OTc5O2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO2ZvbnQtZmFtaWx5Ollhbm9uZSBLYWZmZWVzYXR6Oy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246WWFub25lIEthZmZlZXNhdHoiCiAgICAgICAgIHg9IjQ5LjU1MTk5OCIKICAgICAgICAgeT0iMTYwNC40ODQiCiAgICAgICAgIGlkPSJ0ZXh0Mzg2MCIKICAgICAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEwMCUiPjx0c3BhbgogICAgICAgICAgIHN0eWxlPSJmb250LXNpemU6MjhweCIKICAgICAgICAgICBpZD0idHNwYW4zODY0IgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgeD0iNDkuNTUxOTk4IgogICAgICAgICAgIHk9IjE2MDQuNDg0Ij4qZ3JhcGggaXMgY29uY2VwdHVhbDwvdHNwYW4+PC90ZXh0PgogICAgICA8ZwogICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0yOCkiCiAgICAgICAgIGlkPSJnMzg3MiI+CiAgICAgICAgPHRleHQKICAgICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICAgIHN0eWxlPSJmb250LXNpemU6MzRweDtmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2xpbmUtaGVpZ2h0OjEwMCU7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojNzk3OTc5O2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO2ZvbnQtZmFtaWx5Ollhbm9uZSBLYWZmZWVzYXR6Oy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246WWFub25lIEthZmZlZXNhdHoiCiAgICAgICAgICAgeD0iNjI3LjUwNDAzIgogICAgICAgICAgIHk9IjEzOTYuNjYiCiAgICAgICAgICAgaWQ9InRleHQzODM2IgogICAgICAgICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMDAlIj48dHNwYW4KICAgICAgICAgICAgIGlkPSJ0c3BhbjM4MzgiCiAgICAgICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICAgICAgeD0iNjI3LjUwNDAzIgogICAgICAgICAgICAgeT0iMTM5Ni42NiI+SW50ZWdyYXRpb248L3RzcGFuPjwvdGV4dD4KICAgICAgICA8dGV4dAogICAgICAgICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMDAlIgogICAgICAgICAgIGlkPSJ0ZXh0Mzg1MiIKICAgICAgICAgICB5PSIxNDQ0LjU1OCIKICAgICAgICAgICB4PSI2MjYuNzI4MDMiCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc2l6ZTozNHB4O2ZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7bGluZS1oZWlnaHQ6MTAwJTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiM3OTc5Nzk7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6WWFub25lIEthZmZlZXNhdHo7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpZYW5vbmUgS2FmZmVlc2F0eiIKICAgICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4KICAgICAgICAgICAgIHk9IjE0NDQuNTU4IgogICAgICAgICAgICAgeD0iNjI2LjcyODAzIgogICAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICAgIGlkPSJ0c3BhbjM4NTYiPlRlc3Q8L3RzcGFuPjwvdGV4dD4KICAgICAgICA8cGF0aAogICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjY7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICAgICAgZD0ibSA1NTgsMTM4OSA1OS4wMDI1NiwwIgogICAgICAgICAgIGlkPSJwYXRoMzg2OCIKICAgICAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAvPgogICAgICAgIDxwYXRoCiAgICAgICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgICAgICBpZD0icGF0aDM4NzAiCiAgICAgICAgICAgZD0ibSA1NTgsMTQzNCA1OS4wMDc0MiwwIgogICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiNmZjQzNDI7c3Ryb2tlLXdpZHRoOjY7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtZGFzaGFycmF5Om5vbmUiIC8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="testing continuum" /><figcaption></figcaption></figure></section>
 <section><ul class="right incremental"><li>Test runner</li><li>Container adapter</li><li>&#43; Test enricher</li><li><hr /></li><li><strong>In-container testing</strong></li></ul>
 <details><details open=""><summary>Notes</summary><p>this is the secret to making Java enterprise testing child&#8217;s play</p></details></details></section>
-<section class="topic source"><h2>Arquillian "Hello, World!" Test</h2><div class="listingblock"><pre class="highlight"><code class="java">@RunWith(Arquillian.class)
+<section class="topic source"><h2>Arquillian "Hello, World!" Test</h2><div class="listingblock"><pre class="highlight"><code class="java">@RunWith(<span class="highlight">Arquillian.class</span>)
 public class GreeterTest {
 
-    @Deployment
+    <span class="highlight">@Deployment</span>
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class, "test.jar")
             .addClass(Greeter.class)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
-    @Inject
+    <span class="highlight">@Inject</span>
     Greeter greeter;
 
     @Test

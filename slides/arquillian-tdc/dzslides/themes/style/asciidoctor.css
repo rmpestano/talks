@@ -49,7 +49,7 @@ section, .view head > title {
   bottom: -1.5em;
   right: .5em;
   color: #222;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .view head > title {
@@ -58,7 +58,7 @@ section, .view head > title {
   text-align: center;
   margin: .5em 0 .25em;
   line-height: 1;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .view section[aria-selected] {
@@ -70,7 +70,7 @@ section:not(.title) {
 }
 
 section.title h1 {
-  font-size: 6em;
+  font-size: 4em;
   color: #1D2326;
   position: relative;
   top: 40%;
@@ -85,13 +85,13 @@ section.title h1 {
 section.title footer {
   font-weight: 200;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2.0em;
   padding: 30px 50px;
 }
 
 section[class=topic] h2 {
   color: #222222;
-  font-size: 2.5em;
+  font-size: 2.0em;
   margin-bottom: .5em;
   margin-top: -.5em;
 }
@@ -105,7 +105,7 @@ section.intro h2 {
   color: #FEFEFE;
   line-height: .7em;
   text-align: left;
-  font-size: 4.4em;
+  font-size: 2.0em;
 }
 
 section.intro.alt h1,
@@ -116,8 +116,8 @@ section.intro.alt h2 {
 section.intro h1 strong,
 section.intro h2 strong {
   color: #4EA2B9;
-  font-size: 1.51em;
-  line-height: .8em;
+  font-size: 1.0em;
+  line-height: .6em;
 }
 
 section.intro  p {
@@ -495,7 +495,7 @@ section blockquote p {
   line-height: 1.4;
   margin-bottom: .5em;
   font-style: italic;
-  font-size: 3.0em;
+  font-size: 2.5em;
   font-weight: normal;
 }
 
@@ -509,7 +509,7 @@ blockquote p:last-of-type {
 }
 
 blockquote cite {
-  font-size: 1.5em;
+  font-size: 1.0em;
   display: block;
   line-height: 1.8;
   color: #005498;

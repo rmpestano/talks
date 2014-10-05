@@ -1,14 +1,14 @@
-@RunWith(Arquillian.class)
+@RunWith([highlight]#Arquillian.class#)
 public class GreeterTest {
 
-    @Deployment
+    [highlight]#@Deployment#
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class, "test.jar")
             .addClass(Greeter.class)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
-    @Inject
+    [highlight]#@Inject#
     Greeter greeter;
 
     @Test

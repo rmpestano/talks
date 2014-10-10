@@ -1,8 +1,8 @@
-= Unlock Continuous *Enterprise Development* using *Real Tests*
-Dan Allen
-v1.0, 2013-05-07
-:title: Reducing Java Enterprise Testing to Child's Play
-:corpname: Red Hat, Inc.
+= *Enterprise Testing* using *Arquillian*
+Rafael M. Pestano
+v1.0, 2014-10-10
+:title: Enterprise Testing
+:corpname: Procergs
 :copyright: CC BY-SA 2.0
 :website: http://arquillian.org
 :arquillian: pass:quotes[[ike]#arquillian#]
@@ -27,7 +27,21 @@ v1.0, 2013-05-07
 :dzslides-fonts: family=Yanone+Kaffeesatz:400,700,200,300|Covered+By+Your+Grace
 
 
-[.topic.intro]
+[.topic.incremental]
+== *Agenda*
+
+[.em22.center.top20]
+
+. Testing is too hard
+. Testing is no fun
+. Testing is sloooow
+. There's no time to test
+. Testing *sucks!*
+. Testing *sucks!*
+. Testing *sucks!*
+. Testing *sucks!*
+  
+[.topic.intro.left]
 == *Testing*$$...$$
 
 == !

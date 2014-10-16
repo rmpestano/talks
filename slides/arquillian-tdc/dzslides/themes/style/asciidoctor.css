@@ -28,7 +28,7 @@
  ...
 */
 html, .view body {
-  background: #ededed url(../../images/noise.png) repeat;
+  background: #ededed url(../../images/gray-noise.png) repeat;
   counter-reset: slideidx;
   font-family: 'Neuton', sans-serif;
 }
@@ -226,7 +226,7 @@ section.ending > h2 {
 
 section.ending > h2.name {
   text-transform: none;
-  top: 40%;
+  top: 10%;
 }
 
 section.ending h2.name [class^="icon-"] {
@@ -312,11 +312,12 @@ kbd kbd:last-child { margin-right: 0; }
 
 section ul {
   list-style: none;
-  font-size: 3em;
+  font-size: 2.5em;
   text-transform: uppercase;
   font-weight: 700;
   color: #1A6074;
   text-align: right;
+  line-height: 1px;
   margin-bottom: 1em;
 }
 
@@ -578,7 +579,7 @@ section.source div.title {
   /*color: #7A2518;*/
   color: #333;
   font-weight: 700;
-  font-size: 1.25em;
+  font-size: 2em;
   margin-bottom: .3em;
   padding-left: 1px;
 }
@@ -829,7 +830,7 @@ section.fit > img {
 
 ol {
   margin-left: 1.5em;
-  font-size: 1.5em;
+  font-size: 2.0em;
   margin-bottom: .5em;
 }
 

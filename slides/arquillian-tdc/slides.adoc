@@ -144,7 +144,7 @@ image::6_disconnect_container.png[]
 == *Simple crud*
 
 [.top50]
-Cool but how can i interact with database?  
+Cool but how can i interact with the database?  
 
 [.center.incremental.code]
 * *show me the code!*                   

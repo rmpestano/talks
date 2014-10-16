@@ -15,7 +15,7 @@ bundler install
 === Generate the presentation 
 To generate the HTML presentation, cd intro _arquillian-tdc_ folder and run the following command:
 ----
-asciidoctor -T asciidoctor-backends/slim -a data-uri -a docinfo -bdzslides -a linkcss! slides.adoc
+asciidoctor -T asciidoctor-backends/slim -a data-uri -a docinfo -a linkcss! slides.adoc
 
 ----
 

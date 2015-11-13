@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="In Container Tests">
+    <meta name="author" content="Rafael M. Pestano">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hands on de desenvolvimento rápido de apllicações JavaEE com Forge</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <!--<link rel="stylesheet" href="../css/print/pdf.css">-->
+
+    <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    <!-- <link rel="stylesheet" href="../css/theme/default.css" id="theme">-->
+
+    <!--
+        <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../lib/css/solarized_white.css">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+<!-- Wrap all slides in a single "slides" class -->
+<div class="slides">
+
+<!-- ALL SLIDES GO HERE -->
+<!-- Each section element contains an individual slide -->
+<section>
+    <section data-background="images/ides.png">
+        <h1 style="color: black">JBoss Forge</h1>
+        <p style="color: black">Desenvolvimento rápido de aplicações JavaEE</p>
+        <br/>
+        <p><a href='http://rmpestano.github.io/talks/slides/forge-tdc-2015/index.html' target='_blank'>http://rmpestano.github.io/talks/slides/forge-tdc-2015/</a></p>
+    </section>
+    <section>
+      <h2>Rafael Pestano</h2>
+        <br/>
+        <div style=""><img src="images/pestano.png"/> </div>
+        
+        <div>
+            <a href='http://twitter.com/realpestano/' target="_blank">@realpestano</a>
+        </div>
+        <div>
+            <a href='http://github.com/rmpestano' target="_blank">github.com/rmpestano</a>
+        </div>
+        <div>Desenvolvedor Java na Procergs</div>
+        <div>Opensource <a href="arquillian.org">Arquillian</a>, <a href="https://deltaspike.apache.org/">Deltaspike</a>, <a href="forge.jboss.org/">Forge</a>, <a href="asciidoctor.org/">Asciidoctor</a></div>
+        <div>Pai da Luiza</div>
+         <ul>
+            <li class='fragment roll-in'>
+                <img src="images/lu.jpg"/> 
+            </li>
+            </ul>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Agenda</h2>
+        <ul>
+            <li class='fragment roll-in'>Sobre o Forge</li>
+            <li class='fragment roll-in'>Motivação</li>
+            <li class='fragment roll-in'>Criando uma Aplicação JavaEE</li>
+            <li class='fragment roll-in'>Extendendo o Forge</li>
+            <li class='fragment roll-in'>Q&A</li>
+        </ul>
+    </section>
+     
+</section>
+
+ <section >
+        <h2>Sobre o Forge</h2> 
+         <ul>
+        <li class='fragment roll-in'>Ferramenta baseada em plugins (addons) para automação de tarefas</li>
+        <ul>
+            <li class='fragment roll-in'>Escrito em Java</li>
+            <li class='fragment roll-in'>Runtime modular baseado no JBM</li>
+            <li class='fragment roll-in'>Utilza CDI para injeção de dependência</li>
+            <aside class="notes"> Fora os demais beneficios do CDI</aside>
+            <li class='fragment roll-in'>Disponível nas principais IDEs e linha de comando</li>  
+        </ul>
+        <li class='fragment roll-in'>Mantida pela RedHat</li>
+        <li class='fragment roll-in'>Opensource! comunidade também desenvolve (bastante)</li>
+        <li class='fragment roll-in'>Primeiro commit feito em agosto de 2010</li>
+        <li class='fragment roll-in'>Versão atual 2.19.2</li>
+        </ul>
+</section>
+<section>
+    <section  >
+        <h2>Motivação</h2>
+        <ul>
+
+            <li class='fragment roll-in'>Produtividade
+            </li>
+            <li class='fragment roll-in'>Automação de tarefas repetitivas
+                <div style="margin-left:50px"><img height="100px" width="100px" src="images/typing.gif"/> </div>
+            </li>
+            <li class='fragment roll-in'>
+            Copy&paste é uma arte...e nem todos dominam
+             <div style="margin-left:50px"><img height="150px" width="150px" src="images/cp.jpeg"/> </div>
+            </li>
+            <li class='fragment roll-in'>Desenvolvimento corporativo envolve muitas tecnologias</li>
+             <aside class="notes">Código gerado de alta qualidade, bom para aprender</aside>
+              <li class='fragment roll-in'>Ajuda iniciantes a começar</li>
+            <li class='fragment roll-in'>Ajuda experientes nas tarefas triviais (crie o seu addon Forge)</li>
+            <li class='fragment roll-in'>WORA - write once run anywhere (para IDEs)</li>
+           
+        </ul>
+
+        <aside class="notes">
+            <li >Scripts podem se tornar complexos e dificeis de manter
+            </li>
+            <li >Criação de plugins para IDEs
+                <div style="margin-left:50px"><img height="100px" width="100px" src="images/typing.gif"/> </div>
+            </li>
+            <li >
+               Estagiários
+            </li>
+         </aside>
+    </section>
+
+     
+   
+   
+</section>
+
+  <section data-state="centeroff" data-background="images/hands-on.jpg" data-background-size="50%" data-background-repeat="no-repeat" data-background-position="24px 50%%">
+        <aside class="notes">
+            Mostrar <a href="http://forge.jboss.org/download">página instalação</a>
+        </aside>
+     <h2>Criando um projeto Java</h2>
+         
+    </section>
+
+      <section  data-state="centeroff"  data-background="images/hands-on.jpg" data-background-size="50%" data-background-repeat="no-repeat" data-background-position="24px 50%%">
+        
+        <h2>Criando o modelo (JPA)</h2>
+         
+    </section>
+
+     <section data-state="centeroff" data-background="images/hands-on.jpg" data-background-size="50%" data-background-repeat="no-repeat" data-background-position="24px 50%%">
+        
+        <h2>Expondo REST</h2>
+         
+    </section>
+
+     <section data-state="centeroff" data-background="images/hands-on.jpg" data-background-size="50%" data-background-repeat="no-repeat" data-background-position="24px 50%%">
+        
+        <h2>Scafold!!!</h2>
+         
+    </section>
+
+    <section data-state="centeroff" data-background="images/hands-on.jpg" data-background-size="50%" data-background-repeat="no-repeat" data-background-position="24px 50%%">
+        
+        <h2>Desenvolvimento de addons</h2>
+         <aside class="notes">
+         mostrar comando hello world
+         </aside>
+          <li class='fragment roll-in'>Serializable addon</li>
+          <li class='fragment roll-in'>Design patterns</li>
+          <li class='fragment roll-in'>Swagger addon</li>
+    </section>
+
+<section data-background="images/q&a.jpg" data-state="centeron" >
+     <h2>Q&A</h2> 
+
+</section>     
+      
+<section  data-state="centeron" >
+    <h2>Referências</h2>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=YIkSGGNxF0A" target="_blank">DevNation 2015 - Automate development with JBoss Forge</a> </li>
+        <li><a href="https://github.com/forge/" target="_blank">Github JBoss Forge</a> </li>
+        <li><a href="http://forge.jboss.org/" target="_blank">http://forge.jboss.org/</a> </li>
+         <li><a href="http://pt.slideshare.net/vineetreynolds/jboss-forge-breaking-new-ground-in-developer-productivity" target="_blank">http://JBoss Forge Breaking new ground in Developer Productivity/</a> </li>
+        <li><a href="http://pt.slideshare.net/gastaldi/tdc-2014-jbossforge" target="_blank">Tornando sua IDE interessante denovo</a> </li>
+        <li><a href="http://forge.jboss.org/document/hands-on-lab" target="_blank">Forge Hands on Lab</a> </li>
+        <li><a href="https://github.com/rmpestano/design-patterns" target="_blank">Design patterns Addon</a> </li>
+        <li><a href="https://github.com/rmpestano/swagger-addon" target="_blank">Swagger Addon</a> </li>
+        
+
+    </ul>
+</section>
+<section data-background-size="5%" data-background-repeat="no-repeat" data-background-position="24px 95%">
+    <h2>Obrigado à todos!</h2>
+    <div><img height="500" width="600" src="images/thanks.jpg"/> </div>
+</section>
+</div>
+</div>
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.min.js"></script>
+<!--<script src="../js/print-pdf.js"></script>-->
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+
+Reveal.addEventListener( 'centeroff', function() {
+     Reveal.configure({ center: false });
+} );
+
+Reveal.addEventListener( 'centeron', function() {
+     Reveal.configure({ center: true });
+} );
+
+</script>
+</body>
+</html>

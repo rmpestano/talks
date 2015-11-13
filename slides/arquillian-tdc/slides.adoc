@@ -27,16 +27,6 @@ v1.0, 2014-10-10
 :dzslides-fonts: family=Yanone+Kaffeesatz:400,700,200,300|Covered+By+Your+Grace
 
 
-[.source]
-== *Should I stay or should I go?*
-[.top50.line-space]
-* - 20% theory, 80% practice
-* - some junit background
-* - some JavaEE knowledge
-* - no unit testing(integration and beyond)
-
-[.em1.right]
-source code available here: http://github.com/rmpestano/tdc-poa
 
 [.source]
 == *Introduction*
@@ -68,6 +58,7 @@ ____
 * Graphene
 * Cucumber/JBehave
 * Warp
+* Rest 
 * Jacoco
 * many others!
 
@@ -164,7 +155,7 @@ Are you kidding, dependent tests?
 == *Rest Testing*
 
 [.top50]
-Cool...can you call a Rest endpoint from the test? 
+Cool...can I call a Rest endpoint from the test? 
 
 [.center.incremental.code]
 * *show me the code!*                   
@@ -211,15 +202,16 @@ Just a note about scenario initialization
 * https://github.com/rmpestano/tdc-poa/tree/0.0.8
 
 [.source]
-== *Deployment pipeline*
+== *Continuous integration*
 
 [.top50]
-Can we organaze that in a _Deployment Pipeline?_
+Can we organize that in a _Deployment Pipeline?_
 
 [.center.incremental.code]
 * *show me the that!*                   
   * try live
   * if fail, show the video &#9786;:
+  * http://youtu.be/iPyNz6TUO2E
 
 
 [.topic.recap]
@@ -240,7 +232,9 @@ Can we organaze that in a _Deployment Pipeline?_
 
 * Alien Invasion - http://rpestano.wordpress.com/2014/06/08/arquillian/
 
-* Slides sources - https://github.com/rmpestano/talks/slides/arquillian-tdc/
+* example sources - here: http://github.com/rmpestano/tdc-poa
+
+* Slides sources - https://github.com/rmpestano/talks/tree/gh-pages/slides/arquillian-tdc
 
 
 [.topic.ending]

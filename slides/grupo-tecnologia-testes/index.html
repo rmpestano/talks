@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Encontro SJS">
+    <meta name="author" content="Rafael M. Pestano">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Encontro grupo tecnologia - SJS</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <!--<link rel="stylesheet" href="../css/print/pdf.css">-->
+
+    <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    <!-- <link rel="stylesheet" href="../css/theme/default.css" id="theme">-->
+
+    <!--
+        <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../lib/css/solarized_white.css">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>  
+            <section>
+                 <h2>Encontro grupo de tecnologia - SJS</h2>
+                <p>rafael-pestano - DTI - STD - Ramal 4780</p>
+            </section>
+        </section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li class='fragment roll-in'>Análise estática de código</li>
+                <li class='fragment roll-in'>Testes automátizados</li>
+                <li class='fragment roll-in'>Integração contínua</li>
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>Análise estática de código</h2>
+                <p><blockquote>&ldquo;Verificação de um programa sem a execução do mesmo.&ldquo;</blockquote></p>
+
+                <p>Tipos:</p>
+                <ul>
+                    <li class='fragment roll-in'>
+                        <p>Preventiva</p>
+                        <ul>
+                        <li class='fragment roll-in'>
+                            <p>Exemplo pmd</p>
+                       </li>
+                   </ul>
+                    </li>
+                    <li class='fragment roll-in'>
+                        <p>Reativa</p>
+                          <ul>
+                        <li class='fragment roll-in'>
+                            <p><a href="https://secweb.intra.rs.gov.br/sonar/dashboard/index/7215" target="_blank"> Exemplo sonar </a></p>
+                       </li>
+                   </ul>
+                    </li> 
+                </ul>
+            </section>
+        </section>
+
+      <section>
+           <h2>Testes Automatizados</h2>
+           <p><blockquote>&ldquo;Testes automatizados garantem que software irá executar conforme o especificado.&ldquo;</blockquote></p>
+      </section>
+        <section>
+            <section>
+                <h2>Vantagens</h2>
+
+                <p><img src="images/img01.jpg" height="500" width="600"/></p>
+            </section>    
+            <section>
+                <h2>Vantagens</h2>
+                <ul>
+                    <li >
+                        <p><a href="https://twitter.com/itsnotgonewell/status/663109296310366212" target="_blank">Facilita manutenção/refatoração;</a></p>
+                        <ul>
+                          <li>
+                            <p><img src="images/bugs.jpg" height="200" width="250"/></p>
+                          </li>  
+                     </ul>
+                    </li>
+                      <li >
+                        <p>Documenta o software;</p>
+                      </li>
+                     <li >
+                        <p>Identifica problemas arquiteturais.</p>
+                      </li>  
+             </ul>    
+            </section>     
+                
+        </section>
+           
+       <section>
+        <section>
+             <h2>Tipo de teste</h2>
+            <p><img src="images/test-pyramid.png" height="500" width="600"/></p>
+        </section>
+          <section>
+             <h2>Tipo de teste</h2>
+            <p><img src="images/automation-pyramid.png" height="500" width="600"/></p>
+        </section>
+       </section> 
+
+       
+
+      <section>
+       <section>
+              <h2>Testes unitários</h2>
+              <br/>
+              <h4>Características:</h4>
+              <ul>
+                    <li>
+                        <p>Escopo pequeno (facil de descobrir causa de falhas);</p>
+                    </li>
+                      <li >
+                        <p>Feedback rapido (executa em milisegundos); </p>
+                      </li>
+                     <li >
+                        <p>Teste isolado (dependencias são "mocadas").</p>
+                      </li>  
+             </ul>    
+     
+       </section> 
+
+        <section>
+              <h2>Exemplo</h2>
+        </section>    
+
+         <section>
+              <h2>Dicas</h2>
+
+                <ul>
+                    <li>
+                        <p>Evitar muitas asserções por teste;</p>
+                    </li>
+                      <li >
+                        <p>Nomes de metodos signigficativos;</p>
+                      </li>
+                     <li >
+                        <p>Usar builders/factories.</p>
+                      </li>  
+             </ul>    
+        </section>     
+   </section>
+
+     <section>
+       <section>
+              <h2>Testes de Integração</h2>
+              <br/>
+              <h4>Características:</h4>
+              <ul>
+                    <li>
+                        <p>Feedback e escopo mediano;</p>
+                    </li>
+                      <li >
+                        <p>Testa componentes combinados (integração); </p>
+                      </li>
+                     <li >
+                        <p>Geralmente envolve diversas camadas da aplicação(exceto visão) como banco, filesystem, transações, segurança etc...</p>
+                      </li>  
+             </ul>    
+     
+       </section> 
+
+        <section>
+              <h2>Exemplos</h2>
+        </section>    
+
+         <section>
+              <h2>Dicas</h2>
+
+                <ul>
+                    <li>
+                        <p>Testem em um ambiente o mais próximo possível de produção (Arquillian);</p>
+                    </li>
+                      <li >
+                        <p>Usem banco em memória;</p>
+                      </li>
+                     <li >
+                        <p>preparem o banco com o dbunit;</p>
+                      </li>  
+                      <li >
+                        <p>Executem os testes a cada commit (se possível).</p>
+                      </li>  
+             </ul>    
+        </section>     
+   </section>
+
+   <section>
+       <section>
+              <h2>Testes funcionais</h2>
+              <br/>
+              <h4>Características:</h4>
+              <ul>
+                    <li>
+                        <p>Testa requisitos funcionais;</p>
+                        <ul>
+                          <li>Geralmente se traduz em UI; </li>   
+                          <li>Testa na perspectiva do usuário.</li>   
+                        </ul> 
+                    </li>
+                      <li >
+                        <p>Feedback demorado (varios minutos.);</p>
+                         
+                      </li>
+                     <li>Cada teste envolve diversos componentes;
+                        <ul>
+                           <li>Geralmente todas as camadas da aplicação</li>     
+                        </ul>    
+                     </li>
+
+                     <li >
+                        <p>Difícil encontrar causa de erros</p>
+                        <ul>
+                          <li>Por que não abriu a tela? </li>   
+                            <li>O seletor pode estar errado </li>   
+                            <li>Problema na conexão com banco </li>   
+                            <li>Permissão do soe </li> 
+                            <li>Atualização do navegador </li> 
+                            <li>Por fim, pode ser um bug mesmo ;) </li> 
+                        </ul>    
+                      </li>  
+
+             </ul>    
+     
+       </section> 
+
+        <section>
+              <h2>Exemplos</h2>
+        </section>    
+
+         <section>
+              <h2>Dicas</h2>
+
+                <ul>
+                    <li>
+                        <p>Priorizem o que vão automatizar;</p>
+                        <ul>
+                            <li>Partes criticas do sistema ex: inscrição no CHS, novo processo no PROA etc...</li>
+                        </ul>    
+                    </li>
+                      <li >
+                        <p>Usem page objects;</p>
+                      </li>
+                     <li >
+                        <p>Usem o Graphene;</p>
+                          <ul>
+                            <li>Seletores jquery;</li>
+                            <li>Esperas automáticas (waitAjax);</li>
+                            <li>Gravação do teste (screenshots e video).</li>
+                        </ul>    
+                      </li>  
+                      <li>
+                        <p>Usem o webdriver phantomjs na integração continua;</p>
+                      </li>  
+                       <li>
+                          <p>Localmente o webdriver do chrome é o mais rápido (no linux é dificil de acompanhar o teste).</p>
+                      </li>  
+             </ul>    
+        </section>  
+
+   </section>
+
+<section>
+    <section>
+              <h2>Integração Contínua</h2>
+              <br/>
+              <h4>Objetivos:</h4>
+
+               <ul>
+                    <li>
+                        <p>Integrar e testar a qualidade do código da equipe frequentemente;</p>
+                    </li>
+                      <li>
+                        <p>Falhar o quanto antes (principalmente antes de ir pra produção)</p>
+                         
+                    </li>
+               </ul>     
+                <p><img src="images/img02.jpg" height="350" width="500"/></p>
+     </section>    
+     <section>
+              <h2>Integração Contínua</h2>
+              <br/>
+              <h4>Dicas:</h4>
+
+               <ul>
+                    <li>
+                        <p>Commitem poucas alterações e com mais frequencia;</p>
+                      <ul>
+                        <li>
+                            Mais fácil identificar a causa de falhas.
+                        </li>    
+                    </ul>
+                    </li>
+                      <li>
+                        <p>Quando o build falha a equipe deve priorizar a correção</p>
+                         <ul>
+                        <li>
+                           O quanto antes mais facil corrigir.
+                        </li>    
+                    </ul>
+                         
+                    </li>
+                    <li>Configurem notificação por email em caso de falha;</li>
+                    <li>Mapeiem o processo de release em um <a href="https://secweb.intra.rs.gov.br/jenkins/user/procergs-rafael-pestano/my-views/view/apm%20pipeline/" target="_blank">pipeline de entrega</a>;</li>
+                    <li>A base do pipeline são os testes;</li>
+                    <li>Quanto mais estágios mais fácil descobrir a causa de falhas;</li>
+                    <li>Usem o sonar e verifiquem os erros críticos frequentemente.</li>    
+               </ul>     
+                
+     </section>    
+</section>
+   
+   <section>
+        <h2>Perguntas?</h2>
+        <p><img src="images/questions.jpg" height="350" width="500"/></p>
+   </section>
+      
+
+    <section>
+        <h2>Obrigado!</h2>
+         <p><blockquote>&ldquo;Without testing, it becomes religion.&ldquo;</blockquote></p>
+      </section>
+   </section>
+  </section>     
+        
+    </div>
+</div>
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.min.js"></script>
+<!--<script src="../js/print-pdf.js"></script>-->
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: '../lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: '../plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: '../plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: '../plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: '../plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+
+</script>
+</body>
+</html>

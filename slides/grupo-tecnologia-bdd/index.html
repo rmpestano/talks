@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Encontro SJS">
+    <meta name="author" content="Rafael M. Pestano">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grupo tecnologia - BDD</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <!--<link rel="stylesheet" href="../css/print/pdf.css">-->
+
+    <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    <!-- <link rel="stylesheet" href="../css/theme/default.css" id="theme">-->
+
+    <!--
+        <link rel="stylesheet" href="../css/theme/typesafe.css" id="theme">
+    -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../lib/css/solarized_white.css">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+</head>
+
+<body>
+<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+<div class="reveal">
+    <!-- Wrap all slides in a single "slides" class -->
+    <div class="slides">
+
+        <!-- ALL SLIDES GO HERE -->
+        <!-- Each section element contains an individual slide -->
+        <section>  
+            <section>
+                 <h2>Grupo de tecnologia - BDD</h2>
+                <p>rafael-pestano - DTI - STD - Ramal 4780</p>
+            </section>
+        </section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li class='fragment roll-in'>O que é?</li>
+				<li class='fragment roll-in'>Por que?</li>
+				<li class='fragment roll-in'>Estórias de usuário</li>
+                <li class='fragment roll-in'>Especificação executvel</li>
+                <li class='fragment roll-in'>Documentação viva</li>
+            </ul>
+        </section>
+
+		<section>
+            <h2>O que é BDD?</h2>
+            <p><blockquote>&ldquo;BDD (Behaviour Driven Development) is a methodology for developing software through continuous example-based <b>communication</b> between developers, QAs and BAs.&ldquo;</blockquote></p>
+			<p class="fragment visible">Originalmente foi concebido como uma evolução do TDD, pois: </p>
+			 <ul>
+                <li class='fragment roll-in'>Desenvolvedores não sabem por onde começar;</li>
+				<li class='fragment roll-in'>TDD foca muito no detalhe e esquece o todo;</li>
+				<li class='fragment roll-in'>Foca no <b>como</b> (implementação) e não no <b>que</b> (funcionalidades).</li>
+ 			</ul>	
+			<hr/>
+			<p class="visible" style="font-size:12px">Mais detalhes no Guia de teste, seção <b>3.6.3</b></p>
+        </section>
+			
+		  <section>
+			<h2>Por que?</h2>
+			 <p><img src="images/right-software.png" height="600" width="800"/> </p>
+     	  </section>
+		
+       <section>
+			<h2>Por que?</h2>				
+			<p><img src="images/product_requirements_pyramid.jpg" height="500" width="600"/> </p>
+		 </section>
+		 
+	    <section>
+			<section>
+				<h2>O Mantra do BDD</h2>				
+				<p><img src="images/bdd-mantra.png" height="600" width="800"/> </p>
+			</section>
+		    <section>
+				<h2>O Mantra do BDD</h2>				
+				<p><img src="images/bdd-mantra2.png" height="600" width="800"/> </p>
+			</section>
+	    </section>
+      <section>
+           <h2>Estória de usuários</h2>
+           <p>Vamos construir uma calculadora</p>
+		   <p><blockquote>&ldquo;Como um matemático renomado <br/>
+		   Eu quero somar números<br/>
+		   Para que eu possa aprender a contar&ldquo;</blockquote></p>
+      </section>
+	  
+	  <section>
+           <h2>Especificação executável</h2>
+		  <p><img src="images/code.jpg" height="600" width="800"/> </p>
+      </section>
+	  
+	   <section>
+           <h2>Documentação viva</h2>
+		  <p><img src="images/living-docs.jpg" height="600" width="800"/> </p>
+      </section>
+	  
+	   <section>
+           <h2>Resumo</h2>
+		  <p><img src="images/bdd-cycle.jpg" height="600" width="800"/> </p>
+      </section>
+
+	   <section>
+			<h2>Perguntas?</h2>
+			<p><img src="images/questions.jpg" height="350" width="500"/></p>
+	   </section>
+
+		<section>
+			<h2>Valeu!</h2>
+		  </section>
+	   </section>    
+        
+    </div>
+</div>
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.min.js"></script>
+<!--<script src="../js/print-pdf.js"></script>-->
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: '../lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: '../plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: '../plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: '../plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: '../plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+
+</script>
+</body>
+</html>

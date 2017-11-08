@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Rafael Pestano" /><title>JavaEE Pipeline como código usando Jenkins, Docker e Sonar</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/summit.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-transition="zoom" data-transition-speed="fast" data-background-image="./images/title.png"><h1>JavaEE Pipeline como código usando Jenkins, Docker e Sonar</h1><p class="author"><small>Rafael Pestano</small></p></section><section id="rafael-pestano"><h2>Rafael Pestano</h2><div class="paragraph"><p>Desenvolvedor Java na PROCERGS</p></div>
+<div class="ulist"><ul><li><p><a href="http://twitter.com/realpestano/" target="_blank">@realpestano</a> <span class="icon"><i class="fa fa-twitter"></i></span></p></li><li><p><a href="http://github.com/rmpestano/" target="_blank">@rmpestano</a> <span class="icon"><i class="fa fa-github"></i></span></p></li><li><p><a href="http://rpestano.wordpress.com" target="_blank">Blog</a> <span class="icon"><i class="fa fa-wordpress"></i></span></p></li></ul></div>
+<div class="imageblock" style=""><img src="./images/rsjug_logo.png" alt="rsjug logo" width="150" height="150" /></div>
+<aside class="notes">
+This is my note.
+
+- It can contain markdown
+- like this list
+
+</aside></section>
+<section id="agenda"><h2>Agenda</h2><div class="ulist"><ul><li><p>Continuous Delivery</p></li><li><p>Pipeline</p></li><li><p>Pipeline</p></li><li><p>Pipeline</p></li><li><p>Pipeline</p></li><li><p>Pipeline</p></li><li><p>Pipeline</p></li><li><p>Referências</p></li></ul></div></section>
+<section><section id="continuous-delivery"><h2>Continuous delivery</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>"A software strategy that enables organizations to deliver new features to users as fast and efficiently as possible"</p></div></blockquote></div><div class="ulist"><ul><li class="fragment"><p>É estar pronto para entregar em produção a qualquer momento!</p></li></ul></div></section><section id="por-que"><h2>Por que?</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>"&#8230;&#8203; If it hurts, do it more frequently, and bring the pain forward."</p></div></blockquote><div class="attribution">&#8212; Jez Humble</div></div></section><section id="objetivos"><h2>Objetivos</h2><div class="ulist"><ul><li><p>Reduzir o risco de uma entrega</p></li><li><p>Criar um processo bem definido de release</p></li><li><p>Tornar o processo de entrega menos doloroso e com menos surpresas</p></li></ul></div>
+<div class="imageblock stretch" style=""><img src="./images/fear_change.jpg" alt="fear change" width="1280" height="720" /></div></section><section id="deploy-para-produo"><h2>Deploy para produção</h2><div class="imageblock stretch" style=""><img src="./images/deploy-to-production.gif" alt="deploy to production" width="1280" height="720" /></div></section><section id="princpios"><h2>Princípios</h2><ul>
+    <li class='fragment roll-in'><p>Cada commit gera um release candidate</p>
+        <blockquote>&ldquo;The longer you delay, the worse(exponentially) the problem becomes&ldquo; [Neal Ford - Director at ThoughtWorks]</blockquote>
+    </li>
+    <li class='fragment roll-in'>
+        <p>Automatize tudo que pode ser automatizado</p>
+    </li>
+    <li class='fragment roll-in'>
+        <p>Testes automatizados são essenciais</p>
+    </li>
+    <li class='fragment roll-in'>
+        <p>Feedback rápido e contínuo </p>
+        <aside class="notes">
+            tanto a nivel de build quanto a nível de cliente(ele vai homologar o release candidate)
+        </aside>
+    </li>
+</ul></section><section id="princpios-2"><h2>Princípios</h2><ul>
+    <li class='fragment roll-in'>
+        <p>Melhoria contínua</p>
+        <aside class="notes">
+            A partir de um processo bem definido eu posso melhorar
+        </aside>
+    </li>
+    <li class='fragment roll-in'>
+        <p>Colaboração, todo mundo é responsável pela release</p>
+        <aside class="notes">
+            DEV, QA, OPs etc...
+        </aside>
+    </li>
+    <li class='fragment roll-in'>
+        Progresso mensurável
+        <ol>
+            <li>
+                <p>Quantos builds falharam?</p>
+            </li>
+            <li>
+                <p>Em qual etapa falhou?</p>
+                <aside class="notes">
+                    compilação, testes, deploy, QA etc...
+                </aside>
+            </li>
+            <li>
+                <p>Quanto tempo para colocar uma versão em produção? </p>
+            </li>
+        </ol>
+    </li>
+</ul></section><section id="consequncias"><h2>Consequências</h2><div class="ulist"><ul><li><p>Reduces the severity and frequency of release failures</p></li><li><p>Improves the Mean Time to Recovery (MTTR)</p></li></ul></div>
+<div class="imageblock stretch" style=""><img src="./images/mttr.jpg" alt="mttr" width="1280" height="720" /></div></section></section>
+<section id="deployment-pipeline"><h2>Deployment pipeline</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>"&#8230;&#8203; A pipeline is a set of stages to bring funcionality from developers to end users"</p></div></blockquote></div>
+<div class="imageblock stretch" style=""><img src="./images/continuous-deployment-pipeline.png" alt="continuous deployment pipeline" width="1280" height="720" /></div></section>
+<section id="jenkins-span-class-underline-1-x-span-pipeline"><h2>Jenkins <span class="underline">1.x</span> pipeline</h2><div class="imageblock stretch" style=""><img src="./images/pipeline-old.png" alt="pipeline old" width="1280" height="720" /></div></section>
+<section id="jenkins-span-class-underline-2-x-span-pipeline"><h2>Jenkins <span class="underline">2.x</span> pipeline</h2><div class="imageblock stretch" style=""><img src="./images/declarative-announce.png" alt="declarative announce" width="1280" height="720" /></div></section>
+<section id="jenkins-2-x-pipeline"><h2>Jenkins 2.x pipeline</h2><div class="ulist"><ul><li class="fragment"><p>Versionamento</p></li><li class="fragment"><p>Reutilização (libraries)</p></li><li class="fragment"><p>Tudo em um único lugar (Jenkinsfile)</p></li><li class="fragment"><p>Sobrevive a restarts</p></li></ul></div></section>
+<section id="jenkins-2-x-pipeline-span-class-underline-como-cdigo-span"><h2>Jenkins 2.x pipeline <span class="underline">como código</span></h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">pipeline {
+    agent any
+
+    stages {
+
+        stage('checkout') {
+
+            steps {
+                git 'https://github.com/rmpestano/tdc-pipeline.git'
+            }
+        }
+
+        stage('build') {
+
+            steps {
+                sh 'mvn clean package'
+            }
+
+        }
+    }
+
+}</code></pre></div></div></section>
+<section id="jenkins-2-x-pipeline-span-class-underline-no-cdigo-span"><h2>Jenkins 2.x pipeline <span class="underline">no código</span></h2><div class="imageblock stretch" style=""><img src="./images/pipeline-in-code.png" alt="pipeline in code" width="1280" height="720" /></div>
+<div class="paragraph"><p>Demo <code>v0.1</code></p></div></section>
+<section id="sonar"><h2>Sonar</h2><div class="paragraph"><p>Demo <code>v0.2</code></p></div>
+<div class="imageblock stretch" style=""><img src="./images/sonar.jpg" alt="sonar" width="1280" height="720" /></div></section>
+<section id="quality-gate"><h2>Quality gate</h2><div class="paragraph"><p>Demo <code>v0.3</code></p></div>
+<div class="imageblock stretch" style=""><img src="./images/you-shall-not-pass.gif" alt="you shall not pass" width="1280" height="720" /></div></section>
+<section id="post-actions"><h2>Post actions</h2><div class="paragraph"><p>Demo <code>v0.4</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">pipeline {
+    agent any
+
+    //stages
+
+    post {
+      always {
+            sendNotification(currentBuild.result)
+      }
+
+      success {
+           echo 'Build was a success'
+      }
+
+      failure {
+           echo 'Build failure'
+      }
+
+      changed {
+          echo 'Build status changed.'
+      }
+   }
+}//end pipeline
+
+def sendNotification(buildStatus) {
+
+  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+
+  def color = buildStatus == 'SUCCESSFUL' ? 'good' : 'danger'
+
+  def message = "${currentBuild.fullDisplayName} *${buildStatus}*. (&lt;${env.BUILD_URL}|Open&gt;)"
+
+
+  slackSend (channel: '#builds', color: color, message: message)
+
+  }</code></pre></div></div></section>
+<section id="pipeline-libraries"><h2>Pipeline libraries</h2><div class="paragraph"><p>Permite o reaproveitamento de trechos de um pipeline</p></div></section>
+<section><section id="tdc-pipeline-final"><h2>TDC Pipeline final</h2><div class="imageblock stretch" style=""><img src="./images/tdc-pipeline.png" alt="tdc pipeline" width="1280" height="720" /></div></section><section id="video"><h2>Video</h2><div class="videoblock stretch"><iframe width="1280" height="720" src="https://www.youtube.com/embed/xUlTyzsMPes?rel=0" frameborder="0" allowfullscreen=""></iframe></div></section></section>
+<section id="perguntas" data-background-color="#01303a"><h2>Perguntas?</h2><div class="imageblock stretch" style=""><img src="./images/questions.jpg" alt="questions" width="1280" height="720" /></div></section>
+<section id="referncias"><h2>Referências</h2><div class="ulist"><ul><li><p><a href="https://github.com/rmpestano/tdc-pipeline/" class="bare">https://github.com/rmpestano/tdc-pipeline/</a></p></li><li><p><a href="https://jenkins.io/doc/book/pipeline/syntax/" class="bare">https://jenkins.io/doc/book/pipeline/syntax/</a></p></li><li><p><a href="https://jenkins.io/blog/2017/02/15/declarative-notifications/" class="bare">https://jenkins.io/blog/2017/02/15/declarative-notifications/</a></p></li><li><p><a href="https://jenkins.io/doc/book/pipeline/shared-libraries/" class="bare">https://jenkins.io/doc/book/pipeline/shared-libraries/</a></p></li><li><p><a href="https://jenkins.io/blog/2017/02/07/declarative-maven-project/" class="bare">https://jenkins.io/blog/2017/02/07/declarative-maven-project/</a></p></li><li><p><a href="https://virtualjug.com/pipeline-as-code-building-continuous-delivery-pipelines-with-jenkins-2/" class="bare">https://virtualjug.com/pipeline-as-code-building-continuous-delivery-pipelines-with-jenkins-2/</a></p></li></ul></div>
+<div class="paragraph"><p>Slides: <a href="https://rmpestano.github.io/talks/javaee-pipeline" class="bare">https://rmpestano.github.io/talks/javaee-pipeline</a></p></div></section>
+<section id="thanks"><div class="imageblock" style=""><img src="./images/thanks.jpg" alt="thanks" width="1280" height="720" /></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: true,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'summit',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>

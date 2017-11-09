@@ -56,7 +56,7 @@ This is my note.
             </li>
         </ol>
     </li>
-</ul></section><section id="consequncias"><h2>Consequências</h2><div class="ulist"><ul><li><p>Reduces the severity and frequency of release failures</p></li><li><p>Improves the Mean Time to Recovery (MTTR)</p></li></ul></div>
+</ul></section><section id="consequncias"><h2>Consequências</h2><div class="ulist"><ul><li><p>Menor severidade e frequência de falhas relacionadas a um release</p></li><li><p>Menor tempo de recuperação à falhas (MTTR)</p></li></ul></div>
 <div class="imageblock stretch" style=""><img src="./images/mttr.jpg" alt="mttr" width="1280" height="720" /></div></section></section>
 <section id="deployment-pipeline"><h2>Deployment pipeline</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>"&#8230;&#8203; A pipeline is a set of stages to bring funcionality from developers to end users"</p></div></blockquote></div>
 <div class="imageblock stretch" style=""><img src="./images/continuous-deployment-pipeline.png" alt="continuous deployment pipeline" width="1280" height="720" /></div></section>
@@ -86,11 +86,14 @@ This is my note.
 
 }</code></pre></div></div></section>
 <section id="jenkins-2-x-pipeline-span-class-underline-no-cdigo-span"><h2>Jenkins 2.x pipeline <span class="underline">no código</span></h2><div class="imageblock stretch" style=""><img src="./images/pipeline-in-code.png" alt="pipeline in code" width="1280" height="720" /></div>
-<div class="paragraph"><p>Demo <code>v0.1</code></p></div></section>
+<div class="paragraph"><p>Demo <code>v0.1</code> (<a href="http://github.com/rmpestano/tdc-pipeline" class="bare">http://github.com/rmpestano/tdc-pipeline</a>)</p></div></section>
 <section id="sonar"><h2>Sonar</h2><div class="paragraph"><p>Demo <code>v0.2</code></p></div>
 <div class="imageblock stretch" style=""><img src="./images/sonar.jpg" alt="sonar" width="1280" height="720" /></div></section>
 <section id="quality-gate"><h2>Quality gate</h2><div class="paragraph"><p>Demo <code>v0.3</code></p></div>
-<div class="imageblock stretch" style=""><img src="./images/you-shall-not-pass.gif" alt="you shall not pass" width="1280" height="720" /></div></section>
+<div class="imageblock stretch" style=""><img src="./images/you-shall-not-pass.gif" alt="you shall not pass" width="1280" height="720" /></div>
+<aside class="notes">
+FALHAR PRIMEIRO, coverage 10
+</aside></section>
 <section id="post-actions"><h2>Post actions</h2><div class="paragraph"><p>Demo <code>v0.4</code></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">pipeline {
     agent any
@@ -127,7 +130,10 @@ def sendNotification(buildStatus) {
 
   slackSend (channel: '#builds', color: color, message: message)
 
-  }</code></pre></div></div></section>
+  }</code></pre></div></div>
+<aside class="notes">
+lastChanges format:'SIDE'
+</aside></section>
 <section id="pipeline-libraries"><h2>Pipeline libraries</h2><div class="paragraph"><p>Permite o reaproveitamento de trechos de um pipeline</p></div></section>
 <section><section id="tdc-pipeline-final"><h2>TDC Pipeline final</h2><div class="imageblock stretch" style=""><img src="./images/tdc-pipeline.png" alt="tdc pipeline" width="1280" height="720" /></div></section><section id="video"><h2>Video</h2><div class="videoblock stretch"><iframe width="1280" height="720" src="https://www.youtube.com/embed/xUlTyzsMPes?rel=0" frameborder="0" allowfullscreen=""></iframe></div></section></section>
 <section id="perguntas" data-background-color="#01303a"><h2>Perguntas?</h2><div class="imageblock stretch" style=""><img src="./images/questions.jpg" alt="questions" width="1280" height="720" /></div></section>
